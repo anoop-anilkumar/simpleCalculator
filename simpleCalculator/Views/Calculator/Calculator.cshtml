@@ -1,0 +1,171 @@
+﻿@model simpleCalculator.Models.Calculator
+@{
+    ViewBag.Title = "Calculator";
+    <h1>@ViewBag.show</h1>
+    <legend> Simple Calculator Application</legend>
+
+    <html>
+    <body>
+        <form>
+            <div class="form-group">
+                <label for="Number1">Enter the First Number</label>
+                <input type="number" class="form-control" id="num1" placeholder="Number 1">
+            </div>
+            <div class="form-group">
+                <label for="Number2">Enter the Second Number</label>
+                <input type="number" class="form-control" id="num2" placeholder="Number 2">
+            </div>
+            <input type="button" id="btnAdd" value="Add" name="Add" />
+            <input type="button" id="btnSub" value="Sub" name="Sub" />
+            <input type="button" id="btnMul" value="Mul" name="Mul" />
+            <input type="button" id="btnDiv" value="Div" name="Div" />
+            <input type="button" id="btnMod" value="Mod" name="Mod" />
+        </form>
+        <p>
+            <h3><u>RESULT</u></h3>
+            <h2 id="result"> RESULT</h2>
+        </p>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#result').hide();
+    });
+    $(document).ready(function () {
+        $('#btnAdd').click(function () {
+            var num1 = $('#num1').val();
+            var num2 = $('#num2').val();
+            $.ajax({
+                type: "POST",
+                url: "/Calculator/Add",
+                data: '{ num1 :' + num1 + ' , num2 : ' + num2 + ' }',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (res) {
+                    $('#result').text(res);
+                    $('#result').show();
+                },
+                error: function (res) {
+                    alert(res.responseText);
+                },
+
+            });
+        });
+    });
+    $(document).ready(function () {
+        $('#btnSub').click(function () {
+            var num1 = $('#num1').val();
+            var num2 = $('#num2').val();
+            $.ajax({
+                type: "POST",
+                url: "/Calculator/Sub",
+                data: '{ num1 :' + num1 + ' , num2 : ' + num2 + ' }',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (res) {
+                    $('#result').text(res);
+                    $('#result').show();
+                },
+                error: function (res) {
+                    alert(res.responseText);
+                }
+            });
+        });
+    });
+    $(document).ready(function () {
+        $('#btnMul').click(function () {
+            var num1 = $('#num1').val();
+            var num2 = $('#num2').val();
+            $.ajax({
+                type: "POST",
+                url: "/Calculator/Mul",
+                data: '{ num1 :' + num1 + ' , num2 : ' + num2 + ' }',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (res) {
+                    $('#result').text(res);
+                    $('#result').show();
+                },
+                error: function (res) {
+                    alert(res.responseText);
+                }
+            });
+        });
+    });
+    $(document).ready(function () {
+        $('#btnDiv').click(function () {
+            var num1 = $('#num1').val();
+            var num2 = $('#num2').val();
+            $.ajax({
+                type: "POST",
+                url: "/Calculator/Div",
+                data: '{ num1 :' + num1 + ' , num2 : ' + num2 + ' }',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (res) {
+                    $('#result').text(res);
+                    $('#result').show();
+                },
+                error: function (res) {
+                    alert(res.responseText);
+                }
+            });
+        });
+    });
+    $(document).ready(function () {
+        $('#btnMod').click(function () {
+            var num1 = $('#num1').val();
+            var num2 = $('#num2').val();
+            $.ajax({
+                type: "POST",
+                url: "/Calculator/Mod",
+                data: '{ num1 :' + num1 + ' , num2 : ' + num2 + ' }',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (res) {
+                    $('#result').text(res);
+                    $('#result').show();
+                },
+                error: function (res) {
+                    alert(res.responseText);
+                }
+            });
+        });
+    });
+</script>
+
+}
+@*
+        @using (Html.BeginForm())
+        {
+            <div class="editor-label">
+                @Html.LabelFor(model => model.number1)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.number1)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.number2)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.number2)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.result)
+            </div>
+            <div>
+                @Html.EditorFor(model => model.result)
+            </div>
+
+
+    Html.TextBoxFor(item => item.OperationNo, new { id = "MyId" })
+
+    <h3>First Number : @Model.number1</h3>
+    <h3>Second Number: @Model.number2</h3>
+    <h3>Result : <b>@Model.result</b></h3>
+
+
+*@
+
